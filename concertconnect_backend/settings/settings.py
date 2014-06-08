@@ -47,9 +47,9 @@ MIDDLEWARE_CLASSES = (
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 )
 
-ROOT_URLCONF = 'cc_backend.urls'
+ROOT_URLCONF = 'concertconnect_backend.urls'
 
-WSGI_APPLICATION = 'cc_backend.wsgi.application'
+WSGI_APPLICATION = 'concertconnect_backend.wsgi.application'
 
 
 # Database
