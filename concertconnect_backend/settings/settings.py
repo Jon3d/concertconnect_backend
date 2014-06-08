@@ -1,6 +1,6 @@
 """
 Django settings for cc_backend project.
-
+'
 For more information on this file, see
 https://docs.djangoproject.com/en/1.6/topics/settings/
 

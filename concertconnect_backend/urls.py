@@ -9,6 +9,8 @@ admin.autodiscover()
 router = routers.DefaultRouter()
 router.register(r'users', views.UserViewSet)
 router.register(r'groups', views.GroupViewSet)
+router.register(r'add_artist', views.GroupViewSet)
+router.register(r'remove_artist', views.GroupViewSet)
 
 urlpatterns = patterns('',
     # Examples:
