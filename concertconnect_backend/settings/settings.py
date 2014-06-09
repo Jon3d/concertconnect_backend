@@ -21,6 +21,8 @@ BASE_DIR = os.path.dirname(os.path.dirname(__file__))
 assert 'CC_DJANGO_SECRET_KEY' in os.environ, 'Set CC_DJANGO_SECRET_KEY in your .env file!'
 SECRET_KEY = os.environ['CC_DJANGO_SECRET_KEY']
 
+print(SECRET_KEY)
+
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
