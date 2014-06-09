@@ -1,8 +1,9 @@
 Language: python
 python:
 - 3.4.1
-install: sudo pip install -r requirements.txt
+install: sudo pip install https://www.djangoproject.com/download/1.7.b4/tarball/ &&
+  sudo pip install -r requirements.txt
 script: python manage.py test
 env:
   matrix:
-    secure: ca4ugalTw6YeDFGwDTpz35HtjVjrK1VC/OaosdHMDCeIM7mckEt9R+9BBATK8pyC+cBlyN1VhAqejaM+uqz333yAHZ9AJtJ/PfDUBahv7mH6W7uHMsFfMw9Rortp4/QRgPHXfqZhQrjZDia5tSfDi4MoiTSdWRbqGMPgVkvRvI0=
+    secure: hos7NzN/d3AJ9vBzkxM5oneW+MSlG3qkO1eUs0M0j9i79H71SEvFtqWq1PRnB48tC9A3P1d6dGpADlsykoEaPlkyyDY1TB89YMbBt2xN8hOpJxu8ekBr7vH2no4h/nP0R6zYIMbnjvo/tbeymBoWi4Eh3rskXAqeLk89+Is/rCw=
