@@ -5,6 +5,6 @@ install: sudo pip install -r requirements.txt
 script: python manage.py test
 env:
   matrix:
-  - secure: OVjrBsep6G3IsbxGJ09X52X0Rsl8Fw1CqcXm3rq0BkzPxKxVQAZZsdA/dVSNScC+WXdCghNwRzxaDr8FNszamntHVl4XahE9xyP9fOfUMqb2cIi26y+iaJpm3nA8cHBzrzbgGDXPDZJ0GOfgG8iafRyYT1DnWRKoVXisoR0yHX4=
-  - secure: aNdaprM/9mg2LBDXeSAMdFz+BsU/4Vp43OCtNXBggVsz1rvMZQ6dIcuriVi8S0gIlQimV2xJbdtmrxSDkTCocA4DWPb8IvYOoOsNQsssp6c1CsJGoAn/ri2UMRjk2O9IyYDXOffj4RuUcwYcXhsZ0KfOOvFmhwLRXaQMQ3ovIgw=
-  - secure: ZuiKU/3ZW5I2Sl8TdgbJ0z18guyonyMHhlvHbcXALpVmbUlNmxhi6L2OoI2DM6sD+Sg8bJfRd8T+LzeDiB+b+CC7KUz9unSp0shXwD+TULaMx5tSryH14IwxVn52WIPq8yR6brzfSlZ4zwRch1FZOhyl7cyIZmB1B+1azmsps3o=
+  - secure: hXkq4ReysJsRBqcuV7QvtyAgBHqQCTXY/9G1gIex+fwV/OSeQiLm1bPeZlRMKyT+VH9BtfHiG8iNGr0pL0rYs6SFnaUv1ZUea4xzgyp9ZiNrWMt7JnYldPgIVPBw9Ar8GFsj9OO/JQr886BkzQ3FiT5XjdFC3HwJfkxG+ABx+0U=
+  - secure: hNuRBDN3AjIMT+lZtS6wsMYMPWCXMVWDHtCX5ks0SHf1SoWIyO66To1QI49u5mBRfI7cRItMlv+PwwwJApvns0sjA8BIHfXRYZNo9Oy2nqKNqazFlEYF9nIr2XCXsze/N6axXqqaPQn8gS5HL+CMlGmJK5V5g3Re/CWr74pAxlY=
+  - secure: FVS2wkmljey7yWbTnOtRwTuKNH1Jn9tT5CEPBnllUv1yN/6BzLJ91w4X5+FhlQrmWLknxN5qmW2wm1Za/CwC5rczy1kqCmZ7E7AjokmmSf+I8yfXmhJKz+TwIaqIbMLEhykk8VTNHR8RP/N4F4/0aELDux6Sfn4ncDL32Up8ZPE=
