@@ -1,7 +1,10 @@
 Language: python
 python:
-  - "3.4.1"
-# command to install dependencies, e.g. pip install -r requirements.txt --use-mirrors
-install: sudo pip install -r requirements.txt 
-# command to run tests, e.g. python setup.py test
-script:  python manage.py test
+- 3.4.1
+install: sudo pip install -r requirements.txt
+script: python manage.py test
+env:
+  matrix:
+  - secure: OVjrBsep6G3IsbxGJ09X52X0Rsl8Fw1CqcXm3rq0BkzPxKxVQAZZsdA/dVSNScC+WXdCghNwRzxaDr8FNszamntHVl4XahE9xyP9fOfUMqb2cIi26y+iaJpm3nA8cHBzrzbgGDXPDZJ0GOfgG8iafRyYT1DnWRKoVXisoR0yHX4=
+  - secure: aNdaprM/9mg2LBDXeSAMdFz+BsU/4Vp43OCtNXBggVsz1rvMZQ6dIcuriVi8S0gIlQimV2xJbdtmrxSDkTCocA4DWPb8IvYOoOsNQsssp6c1CsJGoAn/ri2UMRjk2O9IyYDXOffj4RuUcwYcXhsZ0KfOOvFmhwLRXaQMQ3ovIgw=
+  - secure: ZuiKU/3ZW5I2Sl8TdgbJ0z18guyonyMHhlvHbcXALpVmbUlNmxhi6L2OoI2DM6sD+Sg8bJfRd8T+LzeDiB+b+CC7KUz9unSp0shXwD+TULaMx5tSryH14IwxVn52WIPq8yR6brzfSlZ4zwRch1FZOhyl7cyIZmB1B+1azmsps3o=
