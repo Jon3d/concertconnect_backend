@@ -5,7 +5,6 @@ install: sudo pip install https://www.djangoproject.com/download/1.7.b4/tarball/
   sudo pip install -r requirements.txt
 script: python manage.py test
 env:
-  matrix:
   - secure: hos7NzN/d3AJ9vBzkxM5oneW+MSlG3qkO1eUs0M0j9i79H71SEvFtqWq1PRnB48tC9A3P1d6dGpADlsykoEaPlkyyDY1TB89YMbBt2xN8hOpJxu8ekBr7vH2no4h/nP0R6zYIMbnjvo/tbeymBoWi4Eh3rskXAqeLk89+Is/rCw=
   - secure: pEAtNwHWsmzjc00vioNRsCzSbJQFdwhT3HRjyw/XtyPpJSTXPtv7N7OAHrT1yAVN4FYDwjYwcPjjAwhSV9LAlC4D8/oV6t7/T8t2qplsNWrE/uHhyWY8HHMxy0RvnOOJIWjTx3IkJPCz35+dShShxhmsWmddJeLgsutt3zzSMdk=
   - secure: EfGMYtC9ia1zpbWfH8kASqSFB0RSyvGKlodpo8m2Wa+gZxBEz8mBbMbd8l2352OSlacUcOD0mxzgtwyUuQRkKJHvsqVvor8CEe7G3XIXX3L1J3xQjYZ5qm6/zEE04ESbr/7+vcJCRhfT+W8QXCHsbrizrpxNZnT4QhtLMzevQRc=
