@@ -10,6 +10,7 @@ https://docs.djangoproject.com/en/1.6/ref/settings/
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 import os
+
 BASE_DIR = os.path.dirname(os.path.dirname(__file__))
 
 
@@ -88,3 +89,12 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/1.6/howto/static-files/
 
 STATIC_URL = '/static/'
+
+
+assert 'LAST_FM_API_KEY' in os.environ, 'Set LAST_FM_API_KEY in your .env file!'
+LAST_FM_API_KEY = os.environ['LAST_FM_API_KEY']
+
+assert 'LAST_FM_SECRET_KEY' in os.environ, 'Set LAST_FM_SECRET_KEY in your .env file!'
+SECRET_KEY = os.environ['LAST_FM_SECRET_KEY']
+
+LAST_FM_API_ROOT = "http://ws.audioscrobbler.com/2.0/?method="

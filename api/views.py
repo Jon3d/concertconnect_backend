@@ -1,6 +1,8 @@
 from django.contrib.auth.models import User, Group
+from artist.models import Artist
+from event.models import Event
 from rest_framework import viewsets
-from api.serializers import UserSerializer, GroupSerializer
+from api.serializers import UserSerializer, GroupSerializer, EventSerializer, ArtistSerializer
 
 
 class UserViewSet(viewsets.ModelViewSet):
@@ -17,3 +19,17 @@ class GroupViewSet(viewsets.ModelViewSet):
     """
     queryset = Group.objects.all()
     serializer_class = GroupSerializer
+    
+class ArtistViewSet(viewsets.ModelViewSet):
+    """
+    API endpoint that allows groups to be viewed or edited.
+    """
+    queryset = Artist.objects.all()
+    serializer_class = ArtistSerializer
+    
+class EventViewSet(viewsets.ModelViewSet):
+    """
+    API endpoint that allows groups to be viewed or edited.
+    """
+    queryset = Event.objects.all()
+    serializer_class = EventSerializer
