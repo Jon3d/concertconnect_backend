@@ -14,7 +14,7 @@ router.register(r'events', views.EventViewSet)
 
 urlpatterns = patterns('',
     # Examples:
-    # url(r'^$', 'cc_backend.views.home', name='home'),
+    # url(r'^$', 'concertconnect_backend.views.home', name='home'),
     # url(r'^blog/', include('blog.urls')),
 
     url(r'^admin/', include(admin.site.urls)),
