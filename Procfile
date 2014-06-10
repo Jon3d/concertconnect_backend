@@ -1,1 +1,1 @@
-web: gunicorn concertconnect_backend.wsgi
+web: python manage.py runserver 
