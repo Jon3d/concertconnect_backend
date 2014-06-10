@@ -68,13 +68,6 @@ WSGI_APPLICATION = 'concertconnect_backend.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/1.6/ref/settings/#databases
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
-    }
-}
-
 #Rest framework
 REST_FRAMEWORK = {
     'DEFAULT_PERMISSION_CLASSES': ('rest_framework.permissions.IsAdminUser',),
@@ -99,3 +92,10 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/1.6/howto/static-files/
 
 STATIC_URL = '/static/'
+
+DATABASES = {}
+try:
+	from settings.local import *
+except ImportError:
+	import dj_database_url
+	DATABASES['default'] = dj_database_url.config()
