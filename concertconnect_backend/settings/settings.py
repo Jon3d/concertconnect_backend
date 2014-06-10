@@ -97,3 +97,8 @@ DATABASES = {}
 
 import dj_database_url
 DATABASES['default'] = dj_database_url.config()
+
+import sys
+if 'test' in sys.argv or 'test_coverage' in sys.argv: #Covers regular testing and django-coverage unittests
+    DATABASES['default']['engine'] = 'sqlite3'
+    assert(DATABASES['default']['engine'] == 'sqlite3',)
