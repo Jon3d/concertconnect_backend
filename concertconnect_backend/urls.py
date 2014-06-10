@@ -17,7 +17,7 @@ urlpatterns = patterns('',
     # Examples:
     # url(r'^$', 'concertconnect_backend.views.home', name='home'),
     # url(r'^blog/', include('blog.urls')),
-    url(r'^', RedirectView.as_view(url='http://www.google.com')),
+    url(r'^/', RedirectView.as_view(url='http://www.google.com')),
     
     
     url(r'^admin/', include(admin.site.urls)),
