@@ -1,4 +1,5 @@
 from django.conf.urls import patterns, include, url
+from django.views.generic import RedirectView
 
 from rest_framework import routers
 from api import views
@@ -16,9 +17,11 @@ urlpatterns = patterns('',
     # Examples:
     # url(r'^$', 'concertconnect_backend.views.home', name='home'),
     # url(r'^blog/', include('blog.urls')),
-
+    url(r'^', RedirectView.as_view(url='http://www.google.com')),
+    
+    
     url(r'^admin/', include(admin.site.urls)),
-    url(r'^', include(router.urls)),
+    url(r'^api-rest-framework/', include(router.urls)),
     url(r'^api-auth/', include('rest_framework.urls', namespace='rest_framework')),
     
 )

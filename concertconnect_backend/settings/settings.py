@@ -18,13 +18,13 @@ BASE_DIR = os.path.dirname(os.path.dirname(__file__))
 # See https://docs.djangoproject.com/en/1.6/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-assert 'CC_DJANGO_SECRET_KEY' in os.environ, 'Set CC_DJANGO_SECRET_KEY in your .env file!'
+assert 'CC_DJANGO_SECRET_KEY' in os.environ, 'Set CC_DJANGO_SECRET_KEY in your env vars!'
 SECRET_KEY = os.environ['CC_DJANGO_SECRET_KEY']
 
-assert 'LAST_FM_API_KEY' in os.environ, 'Set LAST_FM_API_KEY in your .env file!'
+assert 'LAST_FM_API_KEY' in os.environ, 'Set LAST_FM_API_KEY in your env vars!'
 LAST_FM_API_KEY = os.environ['LAST_FM_API_KEY']
 
-assert 'LAST_FM_SECRET_KEY' in os.environ, 'Set LAST_FM_SECRET_KEY in your .env file!'
+assert 'LAST_FM_SECRET_KEY' in os.environ, 'Set LAST_FM_SECRET_KEY in your env vars!'
 SECRET_KEY = os.environ['LAST_FM_SECRET_KEY']
 
 LAST_FM_API_ROOT = "http://ws.audioscrobbler.com/2.0/?method="
@@ -94,8 +94,6 @@ USE_TZ = True
 STATIC_URL = '/static/'
 
 DATABASES = {}
-try:
-	from settings.local import *
-except ImportError:
-	import dj_database_url
-	DATABASES['default'] = dj_database_url.config()
+
+import dj_database_url
+DATABASES['default'] = dj_database_url.config()
