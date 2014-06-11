@@ -9,7 +9,10 @@ https://docs.djangoproject.com/en/1.6/ref/settings/
 """
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
-import os, pylast
+import os
+import pylast
+import dj_database_url
+import sys
 
 BASE_DIR = os.path.dirname(os.path.dirname(__file__))
 
@@ -33,10 +36,11 @@ LAST_FM_USERNAME = os.environ['LAST_FM_USERNAME']
 assert 'LAST_FM_PASSWORD' in os.environ, 'Set LAST_FM_PASSWORD in your env vars!'
 LAST_FM_PASSWORD_HASH = pylast.md5(os.environ['LAST_FM_PASSWORD'])
 
-LAST_FM_NETWORK = pylast.LastFMNetwork(api_key = LAST_FM_API_KEY, 
-                               api_secret = LAST_FM_SECRET_KEY, 
-                               username = LAST_FM_USERNAME, 
-                               password_hash = LAST_FM_PASSWORD_HASH)
+if not 'test' in sys.argv or not 'test_coverage' in sys.argv:
+    LAST_FM_NETWORK = pylast.LastFMNetwork(api_key = LAST_FM_API_KEY, 
+                                   api_secret = LAST_FM_SECRET_KEY, 
+                                   username = LAST_FM_USERNAME, 
+                                   password_hash = LAST_FM_PASSWORD_HASH)
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -105,10 +109,8 @@ STATIC_URL = '/static/'
 
 DATABASES = {}
 
-import dj_database_url
 DATABASES['default'] = dj_database_url.config()
 
-import sys
 if 'test' in sys.argv or 'test_coverage' in sys.argv: #Covers regular testing and django-coverage unittests
     DATABASES['default']['engine'] = 'sqlite3'
     
