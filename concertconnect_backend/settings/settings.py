@@ -23,8 +23,9 @@ BASE_DIR = os.path.dirname(os.path.dirname(__file__))
 assert 'CC_DJANGO_SECRET_KEY' in os.environ, 'Set CC_DJANGO_SECRET_KEY in your env vars!'
 SECRET_KEY = os.environ['CC_DJANGO_SECRET_KEY']
 
-if not 'test' in sys.argv or not 'test_coverage' in sys.argv:
+if 'test' not in sys.argv and 'test_coverage' not in sys.argv:
     import pylast
+    print("SHOULD NOT HIT THIS")
     assert 'LAST_FM_API_KEY' in os.environ, 'Set LAST_FM_API_KEY in your env vars!'
     LAST_FM_API_KEY = os.environ['LAST_FM_API_KEY']
     
