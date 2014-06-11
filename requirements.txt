@@ -8,6 +8,7 @@ Sphinx==1.2.2
 Werkzeug==0.9.6
 dj-database-url==0.3.0
 django-filter==0.7
+django-taggit==0.12
 django-toolbox==0.1
 djangorestframework==2.3.13
 docutils==0.11

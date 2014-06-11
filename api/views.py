@@ -1,4 +1,5 @@
 from django.contrib.auth.models import User, Group
+from rest_framework.response import Response
 from artist.models import Artist
 from event.models import Event
 from rest_framework import viewsets
@@ -33,3 +34,17 @@ class EventViewSet(viewsets.ModelViewSet):
     """
     queryset = Event.objects.all()
     serializer_class = EventSerializer
+    
+    @api_view(['GET'])
+    
+def get_similar(request, artist):
+    """
+    List all similar artists.
+    """
+    if request.method == 'GET':
+        if Artist.objects.filter(name=artist):
+            artist = Artist.objects.get(name=artist)
+        else:
+            artist = Artist.objects.create(name=artist)
+        serializer = ArtistSerializer()
+        return Response(serializer.data)

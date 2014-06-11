@@ -9,7 +9,7 @@ https://docs.djangoproject.com/en/1.6/ref/settings/
 """
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
-import os
+import os, pylast
 
 BASE_DIR = os.path.dirname(os.path.dirname(__file__))
 
@@ -25,9 +25,18 @@ assert 'LAST_FM_API_KEY' in os.environ, 'Set LAST_FM_API_KEY in your env vars!'
 LAST_FM_API_KEY = os.environ['LAST_FM_API_KEY']
 
 assert 'LAST_FM_SECRET_KEY' in os.environ, 'Set LAST_FM_SECRET_KEY in your env vars!'
-SECRET_KEY = os.environ['LAST_FM_SECRET_KEY']
+LAST_FM_SECRET_KEY = os.environ['LAST_FM_SECRET_KEY']
 
-LAST_FM_API_ROOT = "http://ws.audioscrobbler.com/2.0/?method="
+assert 'LAST_FM_USERNAME' in os.environ, 'Set LAST_FM_USERNAME in your env vars!'
+LAST_FM_USERNAME = os.environ['LAST_FM_USERNAME']
+
+assert 'LAST_FM_PASSWORD' in os.environ, 'Set LAST_FM_PASSWORD in your env vars!'
+LAST_FM_PASSWORD_HASH = pylast.md5(os.environ['LAST_FM_PASSWORD'])
+
+LAST_FM_NETWORK = pylast.LastFMNetwork(api_key = LAST_FM_API_KEY, 
+                               api_secret = LAST_FM_SECRET_KEY, 
+                               username = LAST_FM_USERNAME, 
+                               password_hash = LAST_FM_PASSWORD_HASH)
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -46,9 +55,10 @@ INSTALLED_APPS = (
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'rest_framework',
     'artist',
+    'taggit',
     'event',
+    'rest_framework',
 )
 
 MIDDLEWARE_CLASSES = (
@@ -101,4 +111,36 @@ DATABASES['default'] = dj_database_url.config()
 import sys
 if 'test' in sys.argv or 'test_coverage' in sys.argv: #Covers regular testing and django-coverage unittests
     DATABASES['default']['engine'] = 'sqlite3'
-    assert(DATABASES['default']['engine'] == 'sqlite3',)
+    
+LOGGING = {
+    'version': 1,
+    'disable_existing_loggers': False,
+    'formatters': {
+        'verbose': {
+            'format' : "[%(asctime)s] %(levelname)s [%(name)s:%(lineno)s] %(message)s",
+            'datefmt' : "%d/%b/%Y %H:%M:%S"
+        },
+        'simple': {
+            'format': '%(levelname)s %(message)s'
+        },
+    },
+    'handlers': {
+        'file': {
+            'level': 'DEBUG',
+            'class': 'logging.FileHandler',
+            'filename': 'logs/cc_backend.log',
+            'formatter': 'verbose'
+        },
+    },
+    'loggers': {
+        'django': {
+            'handlers':['file'],
+            'propagate': True,
+            'level':'DEBUG',
+        },
+        'MYAPP': {
+            'handlers': ['file'],
+            'level': 'DEBUG',
+        },
+    }
+}
