@@ -10,7 +10,6 @@ https://docs.djangoproject.com/en/1.6/ref/settings/
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 import os
-import pylast
 import dj_database_url
 import sys
 
@@ -24,19 +23,20 @@ BASE_DIR = os.path.dirname(os.path.dirname(__file__))
 assert 'CC_DJANGO_SECRET_KEY' in os.environ, 'Set CC_DJANGO_SECRET_KEY in your env vars!'
 SECRET_KEY = os.environ['CC_DJANGO_SECRET_KEY']
 
-assert 'LAST_FM_API_KEY' in os.environ, 'Set LAST_FM_API_KEY in your env vars!'
-LAST_FM_API_KEY = os.environ['LAST_FM_API_KEY']
-
-assert 'LAST_FM_SECRET_KEY' in os.environ, 'Set LAST_FM_SECRET_KEY in your env vars!'
-LAST_FM_SECRET_KEY = os.environ['LAST_FM_SECRET_KEY']
-
-assert 'LAST_FM_USERNAME' in os.environ, 'Set LAST_FM_USERNAME in your env vars!'
-LAST_FM_USERNAME = os.environ['LAST_FM_USERNAME']
-
-assert 'LAST_FM_PASSWORD' in os.environ, 'Set LAST_FM_PASSWORD in your env vars!'
-LAST_FM_PASSWORD_HASH = pylast.md5(os.environ['LAST_FM_PASSWORD'])
-
 if not 'test' in sys.argv or not 'test_coverage' in sys.argv:
+    import pylast
+    assert 'LAST_FM_API_KEY' in os.environ, 'Set LAST_FM_API_KEY in your env vars!'
+    LAST_FM_API_KEY = os.environ['LAST_FM_API_KEY']
+    
+    assert 'LAST_FM_SECRET_KEY' in os.environ, 'Set LAST_FM_SECRET_KEY in your env vars!'
+    LAST_FM_SECRET_KEY = os.environ['LAST_FM_SECRET_KEY']
+    
+    assert 'LAST_FM_USERNAME' in os.environ, 'Set LAST_FM_USERNAME in your env vars!'
+    LAST_FM_USERNAME = os.environ['LAST_FM_USERNAME']
+    
+    assert 'LAST_FM_PASSWORD' in os.environ, 'Set LAST_FM_PASSWORD in your env vars!'
+    LAST_FM_PASSWORD_HASH = pylast.md5(os.environ['LAST_FM_PASSWORD'])
+
     LAST_FM_NETWORK = pylast.LastFMNetwork(api_key = LAST_FM_API_KEY, 
                                    api_secret = LAST_FM_SECRET_KEY, 
                                    username = LAST_FM_USERNAME, 
