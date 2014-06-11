@@ -10,8 +10,6 @@ https://docs.djangoproject.com/en/1.6/ref/settings/
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 import os
-import dj_database_url
-import sys
 
 BASE_DIR = os.path.dirname(os.path.dirname(__file__))
 
@@ -22,26 +20,6 @@ BASE_DIR = os.path.dirname(os.path.dirname(__file__))
 # SECURITY WARNING: keep the secret key used in production secret!
 assert 'CC_DJANGO_SECRET_KEY' in os.environ, 'Set CC_DJANGO_SECRET_KEY in your env vars!'
 SECRET_KEY = os.environ['CC_DJANGO_SECRET_KEY']
-
-if 'test' not in sys.argv and 'test_coverage' not in sys.argv:
-    import pylast
-    print("SHOULD NOT HIT THIS")
-    assert 'LAST_FM_API_KEY' in os.environ, 'Set LAST_FM_API_KEY in your env vars!'
-    LAST_FM_API_KEY = os.environ['LAST_FM_API_KEY']
-    
-    assert 'LAST_FM_SECRET_KEY' in os.environ, 'Set LAST_FM_SECRET_KEY in your env vars!'
-    LAST_FM_SECRET_KEY = os.environ['LAST_FM_SECRET_KEY']
-    
-    assert 'LAST_FM_USERNAME' in os.environ, 'Set LAST_FM_USERNAME in your env vars!'
-    LAST_FM_USERNAME = os.environ['LAST_FM_USERNAME']
-    
-    assert 'LAST_FM_PASSWORD' in os.environ, 'Set LAST_FM_PASSWORD in your env vars!'
-    LAST_FM_PASSWORD_HASH = pylast.md5(os.environ['LAST_FM_PASSWORD'])
-
-    LAST_FM_NETWORK = pylast.LastFMNetwork(api_key = LAST_FM_API_KEY, 
-                                   api_secret = LAST_FM_SECRET_KEY, 
-                                   username = LAST_FM_USERNAME, 
-                                   password_hash = LAST_FM_PASSWORD_HASH)
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -107,43 +85,3 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/1.6/howto/static-files/
 
 STATIC_URL = '/static/'
-
-DATABASES = {}
-
-DATABASES['default'] = dj_database_url.config()
-
-if 'test' in sys.argv or 'test_coverage' in sys.argv: #Covers regular testing and django-coverage unittests
-    DATABASES['default']['engine'] = 'sqlite3'
-    
-LOGGING = {
-    'version': 1,
-    'disable_existing_loggers': False,
-    'formatters': {
-        'verbose': {
-            'format' : "[%(asctime)s] %(levelname)s [%(name)s:%(lineno)s] %(message)s",
-            'datefmt' : "%d/%b/%Y %H:%M:%S"
-        },
-        'simple': {
-            'format': '%(levelname)s %(message)s'
-        },
-    },
-    'handlers': {
-        'file': {
-            'level': 'DEBUG',
-            'class': 'logging.FileHandler',
-            'filename': 'logs/cc_backend.log',
-            'formatter': 'verbose'
-        },
-    },
-    'loggers': {
-        'django': {
-            'handlers':['file'],
-            'propagate': True,
-            'level':'DEBUG',
-        },
-        'MYAPP': {
-            'handlers': ['file'],
-            'level': 'DEBUG',
-        },
-    }
-}
