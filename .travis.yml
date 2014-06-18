@@ -5,7 +5,7 @@ install:
   - sudo pip install -r requirements.txt
 before_script:
   - python manage.py migrate --settings=concertconnect_backend.settings.settings_test --noinput 
-  - python manage.py syncdb --noinput
+  - python manage.py syncdb --settings=concertconnect_backend.settings.settings_test --noinput
 script:
   - python manage.py test --settings=concertconnect_backend.settings.settings_test
 env:
