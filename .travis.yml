@@ -7,7 +7,7 @@ before_script:
   - python manage.py migrate
   - python manage.py syncdb --noinput
 script:
-  - python manage.py migrate
+  - python manage.py migrate --settings=concertconnect_backend.settings.settings_test
   - python manage.py test --settings=concertconnect_backend.settings.settings_test
 env:
   global:
