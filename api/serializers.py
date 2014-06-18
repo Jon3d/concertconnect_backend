@@ -39,7 +39,7 @@ class ArtistSerializer(serializers.Serializer):
         """
         if instance:
             # Update existing instance
-            instance.artist_name = attrs.get('name', instance.artist_name)
+            instance.artist_name = attrs.get('name', instance.name)
             instance.artist_label = attrs.get('artist_label', instance.artist_label)
             instance.bio = attrs.get('bio', instance.bio)
             instance.currently_touring = attrs.get('currently_touring', 

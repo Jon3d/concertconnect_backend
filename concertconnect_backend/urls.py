@@ -19,9 +19,10 @@ urlpatterns = patterns('',
     # url(r'^blog/', include('blog.urls')),
     url(r'^/', RedirectView.as_view(url='http://www.google.com')),
     
-    
-    url(r'^admin/', include(admin.site.urls)),
     url(r'^api-rest-framework/', include(router.urls)),
     url(r'^api-auth/', include('rest_framework.urls', namespace='rest_framework')),
+    url(r'^ccadmin/', include(admin.site.urls)),
     
+    url(r'^artist/$', views.Artists.as_view()),
+    url(r'^artist/(?P<artist_name>)/$', views.Artists.as_view()),
 )
