@@ -4,7 +4,6 @@ python:
 install: 
   - sudo pip install -r requirements.txt
 before_script:
-  - python manage.py flush
   - python manage.py migrate --settings=concertconnect_backend.settings.settings_test 
   - python manage.py syncdb --noinput
 script:
