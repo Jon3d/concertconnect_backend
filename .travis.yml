@@ -2,7 +2,10 @@ Language: python
 python:
 - 3.4.1
 install: sudo pip install -r requirements.txt
-script: python manage.py test --settings=concertconnect_backend.settings.settings_test
+run: 
+	- "python manage.py migrate"
+script: 
+	- python manage.py test --settings=concertconnect_backend.settings.settings_test
 env:
   global:
   - secure: ovTIJfqlE9BuCyS503C1LG22uykD//fXLkSFn+rcPxFQOIQZ+paII+tvRfaeUqOrSXSWcBz+3UqTo1XH5W/TSXMDUOzQHGU81LZ1cKAji5JsKg+vFWCaMpKwqOZ+aQGOXy6CA9ubB9P6u+ru5mZX5UHkjrdrqTgwC1RX+d6pBRU=
