@@ -1,26 +1,25 @@
 Language: python
 python:
-- 3.4.1
-install: sudo pip install -r requirements.txt
-run: 
-	- "python manage.py migrate"
-script: 
-	- python manage.py test --settings=concertconnect_backend.settings.settings_test
+  - 3.4.1
+install: 
+  - sudo pip install -r requirements.txt
+before_script:
+  - python manage.py migrate
+  - python manage.py syncdb --noinput
+script:
+  - python manage.py migrate
+  - python manage.py test --settings=concertconnect_backend.settings.settings_test
 env:
   global:
-  - secure: ovTIJfqlE9BuCyS503C1LG22uykD//fXLkSFn+rcPxFQOIQZ+paII+tvRfaeUqOrSXSWcBz+3UqTo1XH5W/TSXMDUOzQHGU81LZ1cKAji5JsKg+vFWCaMpKwqOZ+aQGOXy6CA9ubB9P6u+ru5mZX5UHkjrdrqTgwC1RX+d6pBRU=
-  - secure: CtlNWYiwUBIpFjD1qIyYztxy3deigWs15eIiJEJobTkB3JDmAnK2o9eoSAq75GD8KGqqkCovIQUZCeCVGgJ0VgTaiBu0PuQId1hFV1/c0aKF6DtB+z086aSY1vK5PN3xENzKB1RS49cMp4+74glyE61a7p7Ux2sEMLyUXsIPlsw=
-  - secure: P7Ka4+psZuJqjg5NL+7PB9ai79zjm7tkjY9/EiniDk8hS7O89D/GRm2mwoX0iBwdhKFL0zwiV08Y+IZXHXZakSa3JXgtKJZZgMp0Ck0ct9+jff1xG/aWChkP2SY1VkTDytcLu1lT/KFG6zBDDb0esGa28mwDEKwhncSPhj6anEg=
-  - secure: hvlrWRxIXVVqtztsE+aXsGi9vRJD0gcSmxfqZ3BBUAa1rqStaYNKmZODMbqBW2EhfovmQb8vlVpNl9uy3VJRzDl55mJp+KdY9WSY7LpEMyfMcGH9U0WeFtcZm0xYdM5nciygV58IpPBKVccmGvdMSLJh0FGJyVRlOB5Sh4UtN4I=
-  - secure: X8Q9JXWjrilPDu89rJi5XqX//TqEW4cCFQOkzzePi72m9Vb/6UgoiRPgDb2Jt5MszAEqmJiKUBPKNGXDtzWIoPpgVJsALL0+ygJ910gsZfIHwvZUe0O0X1UV42kiCX2IHwtqchHhxFnjY6l8nxsgnm2DLTboH3hmQ0ZQG3PWh5E=
+    - secure: ovTIJfqlE9BuCyS503C1LG22uykD//fXLkSFn+rcPxFQOIQZ+paII+tvRfaeUqOrSXSWcBz+3UqTo1XH5W/TSXMDUOzQHGU81LZ1cKAji5JsKg+vFWCaMpKwqOZ+aQGOXy6CA9ubB9P6u+ru5mZX5UHkjrdrqTgwC1RX+d6pBRU=
+    - secure: CtlNWYiwUBIpFjD1qIyYztxy3deigWs15eIiJEJobTkB3JDmAnK2o9eoSAq75GD8KGqqkCovIQUZCeCVGgJ0VgTaiBu0PuQId1hFV1/c0aKF6DtB+z086aSY1vK5PN3xENzKB1RS49cMp4+74glyE61a7p7Ux2sEMLyUXsIPlsw=
+    - secure: P7Ka4+psZuJqjg5NL+7PB9ai79zjm7tkjY9/EiniDk8hS7O89D/GRm2mwoX0iBwdhKFL0zwiV08Y+IZXHXZakSa3JXgtKJZZgMp0Ck0ct9+jff1xG/aWChkP2SY1VkTDytcLu1lT/KFG6zBDDb0esGa28mwDEKwhncSPhj6anEg=
+    - secure: hvlrWRxIXVVqtztsE+aXsGi9vRJD0gcSmxfqZ3BBUAa1rqStaYNKmZODMbqBW2EhfovmQb8vlVpNl9uy3VJRzDl55mJp+KdY9WSY7LpEMyfMcGH9U0WeFtcZm0xYdM5nciygV58IpPBKVccmGvdMSLJh0FGJyVRlOB5Sh4UtN4I=
+    - secure: X8Q9JXWjrilPDu89rJi5XqX//TqEW4cCFQOkzzePi72m9Vb/6UgoiRPgDb2Jt5MszAEqmJiKUBPKNGXDtzWIoPpgVJsALL0+ygJ910gsZfIHwvZUe0O0X1UV42kiCX2IHwtqchHhxFnjY6l8nxsgnm2DLTboH3hmQ0ZQG3PWh5E=
 
 deploy:
   provider: heroku
   api_key:
     secure: kurkoR2wfwKHiiJhvb3P1WIkCjhQN15rJHI2+uLrbcsgCRhnUrsgSxYwhtH7UyWxrTzaa9bnPJzCtFowmjr4fpKoln+AgUoPqf/BlPUXW9XJsBTth82PlrezFthijLE80Ci0o0rh3vn/dpRElq8msJULzGvq4VyFn/mgQZVPdVs=
   app: cc-backend
-  on:
-    repo: Jon3d/concertconnect_backend
-    run: 
-      - "rake db:migrate"
-      - runstart
+  repo: Jon3d/concertconnect_backend
