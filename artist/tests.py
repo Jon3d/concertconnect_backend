@@ -20,7 +20,3 @@ class Test(TestCase):
                                        genre='test_rock')
         assert artist.pk != self.artist.pk, (artist.pk, self.artist.pk)
     
-#     def test_create_if_new_not_new(self):
-#         artist = Artist.objects.create(name=self.name,
-#                                        genre=self.genre)
-#         assert artist.pk == self.artist.pk, (artist.pk, self.artist.pk)

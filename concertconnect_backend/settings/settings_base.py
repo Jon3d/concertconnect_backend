@@ -38,10 +38,12 @@ INSTALLED_APPS = (
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'artist',
-    'event',
+    'concertconnect_backend',
     'rest_framework',
     'taggit',
+    'artist',
+    'ccuser',
+    'event',
 )
 
 MIDDLEWARE_CLASSES = (

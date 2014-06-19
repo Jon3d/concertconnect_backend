@@ -1,17 +1,16 @@
-'''
-Created on Jun 8, 2014
+from django.contrib import admin
+from artist.models import Artist
+from ccuser.models import CCUser
+from event.models import Event
 
-@author: jhuisingh
-'''
+@admin.register(Artist)
+class ArtistAdmin(admin.ModelAdmin):
+    pass
 
-class MyClass(object):
-    '''
-    classdocs
-    '''
+@admin.register(CCUser)
+class CCUserAdmin(admin.ModelAdmin):
+    pass
 
-
-    def __init__(self, params):
-        '''
-        Constructor
-        '''
-        
+@admin.register(Event)
+class EventAdmin(admin.ModelAdmin):
+    pass
